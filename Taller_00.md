@@ -8,6 +8,14 @@ Mapa web Rutas urbanas Bogotá
 
 Mapa de ejemplo clase
 
+##  Cuál es el problema a tratar?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat quam vitae lorem cursus vestibulum. Maecenas congue, tellus at feugiat pharetra, mauris turpis lobortis mi, sit amet fermentum sapien lectus sit amet nulla. In vitae condimentum dolor. In pulvinar est in erat mollis interdum. Aenean et velit sagittis, egestas lectus ornare, euismod neque. Maecenas consequat odio a quam interdum, vel sodales tellus sodales. Sed at gravida orci. Mauris mattis urna nec egestas faucibus. In tempor turpis at sapien imperdiet blandit eu non quam. Aliquam vel est id orci tempus cursus ac sit amet eros. Duis bibendum eu nisi eu aliquet.
+
+##  Por qué un mapa ayuda a resolverlo?
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat quam vitae lorem cursus vestibulum. Maecenas congue, tellus at feugiat pharetra, mauris turpis lobortis mi, sit amet fermentum sapien lectus sit amet nulla. In vitae condimentum dolor. In pulvinar est in erat mollis interdum. Aenean et velit sagittis, egestas lectus ornare, euismod neque. Maecenas consequat odio a quam interdum, vel sodales tellus sodales. Sed at gravida orci. Mauris mattis urna nec egestas faucibus. In tempor turpis at sapien imperdiet blandit eu non quam. Aliquam vel est id orci tempus cursus ac sit amet eros. Duis bibendum eu nisi eu aliquet.
+
 ## Fuente de datos
 
 Datos abiertos Bogotá https://datosabiertos.bogota.gov.co/dataset/ruta-urbana
