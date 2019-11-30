@@ -14,8 +14,8 @@ Datos abiertos Bogotá https://datosabiertos.bogota.gov.co/dataset/ruta-urbana
 
 ##  Herramientas
 
-QGIS
-QgisCloud
+- QGIS
+- QgisCloud
 
 ##  Proceso Realizado
 
