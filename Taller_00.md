@@ -27,6 +27,13 @@ Datos abiertos Bogotá https://datosabiertos.bogota.gov.co/dataset/ruta-urbana
 
 ##  Proceso Realizado
 
+- Se creó cuenta gratuita en QgisCloud https://qgiscloud.com/
+- En QGIS se instaló del plugin de qgiscloud
+
+
+![img1](images/00_qgiscloud.png)
+
+
 - Se descargó la información en formato .shp
 - Se configuró simbología a través de clasificación categórica por atributo único.
 
