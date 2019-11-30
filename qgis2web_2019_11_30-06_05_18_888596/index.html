@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/rutashabileszonalesRutasHbilesZonales_0.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[4.620871718823955,-74.17421737682263],[4.713177012748814,-74.04105815913056]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_rutashabileszonalesRutasHbilesZonales_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['objectid'] !== null ? Autolinker.link(feature.properties['objectid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['route_id_r'] !== null ? Autolinker.link(feature.properties['route_id_r'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>route_name</strong><br />' + (feature.properties['route_name'] !== null ? Autolinker.link(feature.properties['route_name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['codigo_def'] !== null ? Autolinker.link(feature.properties['codigo_def'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['denominaci'] !== null ? Autolinker.link(feature.properties['denominaci'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['origen_rut'] !== null ? Autolinker.link(feature.properties['origen_rut'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['destino_ru'] !== null ? Autolinker.link(feature.properties['destino_ru'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tipo_ruta_'] !== null ? Autolinker.link(feature.properties['tipo_ruta_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['longitud_r'] !== null ? Autolinker.link(feature.properties['longitud_r'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tipo_servi'] !== null ? Autolinker.link(feature.properties['tipo_servi'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['delega_rut'] !== null ? Autolinker.link(feature.properties['delega_rut'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['zona_orige'] !== null ? Autolinker.link(feature.properties['zona_orige'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['zona_desti'] !== null ? Autolinker.link(feature.properties['zona_desti'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['localidad_'] !== null ? Autolinker.link(feature.properties['localidad_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['localidad1'] !== null ? Autolinker.link(feature.properties['localidad1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fecha_impl'] !== null ? Autolinker.link(feature.properties['fecha_impl'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['globalid'] !== null ? Autolinker.link(feature.properties['globalid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['operador_r'] !== null ? Autolinker.link(feature.properties['operador_r'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_rutashabileszonalesRutasHbilesZonales_0_0(feature) {
+            switch(String(feature.properties['operador_r'])) {
+                case '(EG)-Opera SUMA':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(210,125,190,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '#N/D':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(111,75,203,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ALCAPITAL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(181,107,213,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CO-Opera Gmóvil':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(226,138,90,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(75,151,218,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS D':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(205,118,159,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS N':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(118,201,150,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS- MASIVO CAPITAL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(219,109,177,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS-ESTE ES MI BUS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(62,81,221,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS-ETIB':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(208,14,189,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS-GMOVIL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(115,226,233,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'CONSORCIO EXPRESS-MASIVO CAPITAL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(137,200,231,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ESTE ES MI BUS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(238,43,29,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ESTE ES MI BUS CO':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(140,43,213,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ESTE ES MI BUS TZ':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(209,144,40,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ESTE ES MI BUS-ESTE ES MI BUS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(170,233,22,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ESTE ES MI BUS-GMOVIL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(227,210,77,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ESTE ES MI BUS, apoya ET':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(78,75,201,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ETIB':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(62,98,205,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'ETIB BO':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(128,229,223,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'GMOVIL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(172,233,125,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'GMOVIL E':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(161,231,131,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'GMOVIL-CONSORCIO EXPRESS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(202,125,52,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'GMOVIL-ETIB':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(202,125,52,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'GMOVIL-SUMA':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(197,200,13,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'GMOVIL-TRANZIT':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(216,124,234,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(118,226,116,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL KE':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(130,228,111,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL S.A.S.':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(58,216,182,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL SO':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(149,218,59,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL-CONSORCIO EXPRESS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(89,208,166,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL-ESTE ES MI BUS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(89,208,166,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL-GMOVIL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(208,234,75,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL-SUMA':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(111,94,205,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MASIVO CAPITAL-TRANZIT':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(232,126,133,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'SUMA':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(200,55,103,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'SUMA BC':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(211,52,13,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TRANZIT':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(19,232,72,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TRANZIT US':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(136,69,230,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TRANZIT-CONSORCIO EXPRESS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(199,118,202,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TRANZIT-ESTE ES MI BUS':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(85,185,210,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TRANZIT-GMOVIL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(212,183,95,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'TRANZIT-MASIVO CAPITAL':
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(51,209,133,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+                opacity: 1,
+                color: 'rgba(227,89,117,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_rutashabileszonalesRutasHbilesZonales_0');
+        map.getPane('pane_rutashabileszonalesRutasHbilesZonales_0').style.zIndex = 400;
+        map.getPane('pane_rutashabileszonalesRutasHbilesZonales_0').style['mix-blend-mode'] = 'normal';
+        var layer_rutashabileszonalesRutasHbilesZonales_0 = new L.geoJson(json_rutashabileszonalesRutasHbilesZonales_0, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_rutashabileszonalesRutasHbilesZonales_0',
+            layerName: 'layer_rutashabileszonalesRutasHbilesZonales_0',
+            pane: 'pane_rutashabileszonalesRutasHbilesZonales_0',
+            onEachFeature: pop_rutashabileszonalesRutasHbilesZonales_0,
+            style: style_rutashabileszonalesRutasHbilesZonales_0_0,
+        });
+        bounds_group.addLayer(layer_rutashabileszonalesRutasHbilesZonales_0);
+        map.addLayer(layer_rutashabileszonalesRutasHbilesZonales_0);
+        setBounds();
+        </script>
+    </body>
+</html>
